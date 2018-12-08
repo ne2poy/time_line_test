@@ -100,38 +100,28 @@ namespace time_line_test
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             //-----------------------------------------------------------------------------------------------------------------
             chart3.ChartAreas[0].AxisX.CustomLabels.Clear();
             chart3.Series.Clear();
             int step_month = 0;
             int numb_month = comboBox1.SelectedIndex;
-            //for (int i = 1; i <= kol+kol2+kol3; i++)
-            //{
-            //    chart3.Series.Add(i.ToString());
-            ////    chart3.Series[i - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            ////    chart3.Series[i - 1].BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            ////    chart3.Series[i - 1].Color = Color.Blue;
-            ////    chart3.Series[i - 1].BackSecondaryColor = Color.LightSkyBlue;
-            ////    chart3.Series[i - 1].BorderColor = Color.Black;
-            ////    chart3.Series[i - 1].BorderWidth = 2;
-            //    //chart3.Series[i - 1].Points.AddXY("Картридж", Convert.ToInt32(textBox4.Text));
-            //    //chart3.Series[i - 1].Points.AddXY("Барабан", Convert.ToInt32(textBox6.Text));
-            //    //chart3.Series[i - 1].Points.AddXY("Печка", Convert.ToInt32(textBox8.Text));
-
-            //    //chart3.ChartAreas[0].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            //    //chart3.ChartAreas[0].AxisY.Interval = Convert.ToInt32(textBox3.Text);
-            //    //chart3.ChartAreas[0].AxisY.CustomLabels.Add(step_month, (step_month + Convert.ToInt32(textBox3.Text)), Convert.ToString(comboBox1.Items[numb_month]));
-            //    //step_month = step_month + Convert.ToInt32(textBox3.Text);
-
-            //    if (numb_month < 11)
-            //        numb_month++;
-            //    else
-            //        numb_month = numb_month - 11;
-            //}
-
-
-
-
 
             chart3.ChartAreas[0].AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             chart3.ChartAreas[0].AxisX.MajorGrid.Interval = 1000;
@@ -139,38 +129,23 @@ namespace time_line_test
 
             int step_line = 0;
 
-            //for (int i1 = 1; i1 <= kol; i1++)
-            //{
-            //    //try
-            //    //{
-            //    //chart3.Series.Add("");
-            //    chart3.Series[i1 - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            //    //chart3.Series[i1 - 1].BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            //    chart3.Series[i1 - 1].Color = Color.Red;
-            //    //chart3.Series[i1 - 1].BackSecondaryColor = Color.LightSkyBlue;
-            //    //chart3.Series[i1 - 1].BorderColor = Color.Black;
-            //    chart3.Series[i1 - 1].BorderWidth = 2;
+            int qty_items = dataGridView2.RowCount-1;
+            int qty_series = 0;
 
-            //    //}
-            //    //catch
-            //    //{ }
-            //    //chart3.Series[i1 - 1].Points.AddXY("Картридж", Convert.ToInt32(textBox4.Text));
+            int position = 0;
 
-            //    chart3.Series[i1 - 1].Points.AddXY(step_line, 8);
-            //    chart3.Series[i1 - 1].Points.AddXY(step_line, 12);
 
-            //    chart3.Series[i1 - 1].Points.AddXY(step_line, 10);
-            //    chart3.Series[i1 - 1].Points.AddXY(step_line + Convert.ToInt32(textBox4.Text), 10);
-
-            //    step_line = step_line + Convert.ToInt32(textBox4.Text);
-            //}
+            for (int i = 0; i < qty_items; i++)
+            {
+                qty_series = qty_series + Convert.ToInt32(dataGridView2[2, i].Value);
+            }
 
 
 
 
             step_line = 0;
             //int i2 = 2;
-            for (int j = 0; j <= kol + kol2 + kol3; j++)
+            for (int j = 0; j <= qty_series; j++)
             {
                 chart3.Series.Add(j.ToString());
                 chart3.Series[j].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -186,253 +161,38 @@ namespace time_line_test
                 else
                     numb_month = numb_month - 11;
 
-
-
-
-            //chart3.Series[j].Points.AddXY(step_line, 18);
-            //chart3.Series[j].Points.AddXY(step_line, 22);
-
-            //chart3.Series[j].Points.AddXY(step_line, 20);
-            //chart3.Series[j].Points.AddXY(step_line + Convert.ToInt32(textBox6.Text), 20);
-
-            //step_line = step_line + Convert.ToInt32(textBox6.Text);
-
-        }
-
-
-
-            for (int j = 0; j < kol + kol2 + kol3;)
-            {
-                step_line = 0;
-                for (int i = 0; i < kol; i++)
-                {
-                    chart3.ChartAreas[0].AxisY.CustomLabels.Add(8, 12, "Картридж");
-
-                    chart3.Series[j].Color = Color.Red;
-                    chart3.Series[j].Points.AddXY(step_line, 8);
-                    chart3.Series[j].Points.AddXY(step_line, 12);
-
-                    chart3.Series[j].Points.AddXY(step_line, 10);
-                    chart3.Series[j].Points.AddXY(step_line + Convert.ToInt32(textBox4.Text), 10);
-
-                    step_line = step_line + Convert.ToInt32(textBox4.Text);
-                    j++;
-                }
-
-                step_line = 0;
-                for (int i = 0; i < kol2; i++)
-                {
-                    chart3.ChartAreas[0].AxisY.CustomLabels.Add(18, 22, "Барабан");
-
-                    chart3.Series[j].Color = Color.Green;
-                    chart3.Series[j].Points.AddXY(step_line, 18);
-                    chart3.Series[j].Points.AddXY(step_line, 22);
-
-                    chart3.Series[j].Points.AddXY(step_line, 20);
-                    chart3.Series[j].Points.AddXY(step_line + Convert.ToInt32(textBox6.Text), 20);
-
-                    step_line = step_line + Convert.ToInt32(textBox6.Text);
-                    j++;
-                }
-
-                step_line = 0;
-                for (int i = 0; i < kol3; i++)
-                {
-                    chart3.ChartAreas[0].AxisY.CustomLabels.Add(28, 32, "Печка");
-
-                    chart3.Series[j].Color = Color.Blue;
-                    chart3.Series[j].Points.AddXY(step_line, 28);
-                    chart3.Series[j].Points.AddXY(step_line, 32);
-
-                    chart3.Series[j].Points.AddXY(step_line, 30);
-                    chart3.Series[j].Points.AddXY(step_line + Convert.ToInt32(textBox8.Text), 30);
-
-                    step_line = step_line + Convert.ToInt32(textBox8.Text);
-                    j++;
-                }
-
-
             }
 
 
 
 
 
+            int k = 0;
 
+                for (int j = 0; j < qty_series;)
+                {
+                    int plus_step = Convert.ToInt32(dataGridView2[1, k].Value);
 
+                    position = position + 5;
+                    step_line = 0;
+                    for (int i = 0; i < Convert.ToInt32(dataGridView2[2, k].Value); i++)
+                    {
+                        chart3.ChartAreas[0].AxisY.CustomLabels.Add(position - 2, position + 2, dataGridView2[0, k].Value.ToString());
 
+                        chart3.Series[j].Color = Color.Red;         //tyt perechislenie colors i vinesti eto za cikle
+                        chart3.Series[j].Points.AddXY(step_line, position - 2);
+                        chart3.Series[j].Points.AddXY(step_line, position + 2);
 
+                        chart3.Series[j].Points.AddXY(step_line, position);
+                        chart3.Series[j].Points.AddXY(step_line + plus_step, position);
 
-            //step_line = 0;
-            ////int i2 = 2;
-            //for (int i2 = kol+1; i2 <= kol+kol2; i2++)
-            //{
-            //    //try
-            //    //{
-            //    //chart3.Series.Add("");
-            //    chart3.Series[i2 - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            //    //chart3.Series[i2 - 1].BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            //    chart3.Series[i2 - 1].Color = Color.Blue;
-            //    //chart3.Series[i2 - 1].BackSecondaryColor = Color.LightSkyBlue;
-            //    //chart3.Series[i2 - 1].BorderColor = Color.Black;
-            //    chart3.Series[i2 - 1].BorderWidth = 2;
+                        step_line = step_line + plus_step;
+                        j++;
+                    }
 
+                    k++;
 
-            //    //}
-            //    //catch
-            //    //{ }
-
-            //    //chart3.Series[i2 - 1].Points.AddXY("Барабан", Convert.ToInt32(textBox6.Text));
-            //    //chart3.Series[i2 - 1].Points.AddXY(10, 5);
-            //    //chart3.Series[i2 - 1].Points.AddXY(20, 5);
-
-            //    chart3.Series[i2 - 1].Points.AddXY(step_line, 18);
-            //    chart3.Series[i2 - 1].Points.AddXY(step_line, 22);
-
-            //    chart3.Series[i2 - 1].Points.AddXY(step_line, 20);
-            //    chart3.Series[i2 - 1].Points.AddXY(step_line + Convert.ToInt32(textBox6.Text), 20);
-
-            //    step_line = step_line + Convert.ToInt32(textBox6.Text);
-
-
-
-
-            //}
-
-
-
-
-
-            //step_line = 0;
-            ////int i2 = 2;
-            //for (int i3 = kol+kol2+1; i3 <= kol+kol2+kol3; i3++)
-            //{
-            //    //try
-            //    //{
-            //    //chart3.Series.Add("");
-            //    chart3.Series[i3 - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            //    //chart3.Series[i2 - 1].BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            //    chart3.Series[i3 - 1].Color = Color.Green;
-            //    //chart3.Series[i2 - 1].BackSecondaryColor = Color.LightSkyBlue;
-            //    //chart3.Series[i2 - 1].BorderColor = Color.Black;
-            //    chart3.Series[i3 - 1].BorderWidth = 2;
-
-
-            //    //}
-            //    //catch
-            //    //{ }
-
-            //    //chart3.Series[i2 - 1].Points.AddXY("Барабан", Convert.ToInt32(textBox6.Text));
-            //    //chart3.Series[i2 - 1].Points.AddXY(10, 5);
-            //    //chart3.Series[i2 - 1].Points.AddXY(20, 5);
-
-            //    chart3.Series[i3 - 1].Points.AddXY(step_line, 28);
-            //    chart3.Series[i3 - 1].Points.AddXY(step_line, 32);
-
-            //    chart3.Series[i3 - 1].Points.AddXY(step_line, 30);
-            //    chart3.Series[i3 - 1].Points.AddXY(step_line + Convert.ToInt32(textBox8.Text), 30);
-
-            //    step_line = step_line + Convert.ToInt32(textBox8.Text);
-
-
-
-
-            //}
-
-
-
-
-
-
-
-
-
-            //for (int i3 = 1; i3 <= kol3; i3++)
-            {
-                //try
-                //{
-                //    chart3.Series.Add(i3.ToString());
-                //    chart3.Series[i3 - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-                //    chart3.Series[i3 - 1].BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-                //    chart3.Series[i3 - 1].Color = Color.Green;
-                //    chart3.Series[i3 - 1].BackSecondaryColor = Color.LightSkyBlue;
-                //    chart3.Series[i3 - 1].BorderColor = Color.Black;
-                //    chart3.Series[i3 - 1].BorderWidth = 2;
-
-
-                //}
-                //catch
-                //{ }
-                //chart3.Series[i3].Points.AddXY("Печка", Convert.ToInt32(textBox8.Text));
-
-            }
-
-
-
-
-
-
-            //chart3.ChartAreas[1].AxisY.CustomLabels.Clear();
-            //chart3.Series.Clear();
-            //step_month = 0;
-            //numb_month = comboBox1.SelectedIndex;
-            //for (int i = 1; i <= kol; i++)
-            //{
-            //    chart3.Series.Add(i.ToString());
-            //    chart3.Series[i - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            //    chart3.Series[i - 1].BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            //    chart3.Series[i - 1].Color = Color.Blue;
-            //    chart3.Series[i - 1].BackSecondaryColor = Color.LightSkyBlue;
-            //    chart3.Series[i - 1].BorderColor = Color.Black;
-            //    chart3.Series[i - 1].BorderWidth = 2;
-            //    chart3.Series[i - 1].Points.AddXY("Барабан", Convert.ToInt32(textBox4.Text));
-            //    //chart3.ChartAreas[0].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            //    chart3.ChartAreas[1].AxisY.Interval = Convert.ToInt32(textBox3.Text);
-            //    chart3.ChartAreas[1].AxisY.CustomLabels.Add(step_month, (step_month + Convert.ToInt32(textBox3.Text)), Convert.ToString(comboBox1.Items[numb_month]));
-            //    step_month = step_month + Convert.ToInt32(textBox3.Text);
-
-            //    if (numb_month < 11)
-            //        numb_month++;
-            //    else
-            //        numb_month = numb_month - 11;
-            //}
-
-
-
-
-
-            //chart3.ChartAreas[0].AxisY.CustomLabels.Clear();
-            //chart3.Series.Clear();
-            //step_month = 0;
-            //numb_month = comboBox1.SelectedIndex;
-            //for (int i = 1; i <= kol; i++)
-            //{
-            //    chart3.Series.Add(i.ToString());
-            //    chart3.Series[i - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            //    chart3.Series[i - 1].BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            //    chart3.Series[i - 1].Color = Color.Blue;
-            //    chart3.Series[i - 1].BackSecondaryColor = Color.LightSkyBlue;
-            //    chart3.Series[i - 1].BorderColor = Color.Black;
-            //    chart3.Series[i - 1].BorderWidth = 2;
-            //    chart3.Series[i - 1].Points.AddXY("Картридж", Convert.ToInt32(textBox4.Text));
-            //    //chart3.ChartAreas[0].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            //    chart3.ChartAreas[0].AxisY.Interval = Convert.ToInt32(textBox3.Text);
-            //    chart3.ChartAreas[0].AxisY.CustomLabels.Add(step_month, (step_month + Convert.ToInt32(textBox3.Text)), Convert.ToString(comboBox1.Items[numb_month]));
-            //    step_month = step_month + Convert.ToInt32(textBox3.Text);
-
-            //    if (numb_month < 11)
-            //        numb_month++;
-            //    else
-            //        numb_month = numb_month - 11;
-            //}
-
-
-
-
-
-
-
-
+                }
 
         }
 
@@ -442,27 +202,6 @@ namespace time_line_test
             comboBox2.SelectedIndex = 0;
 
             
-            //var dp = new DataPoint(8D, 12D);
-            //dp.Color = Color.Red;
-            //dp.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            //var series = this.chart1.Series[0];
-            //series.Points.Add(dp);
-
-
-
-            ////int new_res = 0;
-            //for (int i = 1; i <= 5; i++)
-            //{
-            //    //new_res = new_res + Convert.ToInt32(textBox4.Text);
-            //    chart3.Series.Add(i.ToString());
-            //    chart3.Series[i - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            //    chart3.Series[i - 1].BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            //    chart3.Series[i - 1].Color = Color.Blue;
-            //    chart3.Series[i - 1].BackSecondaryColor = Color.LightSkyBlue;
-            //    chart3.Series[i - 1].BorderColor = Color.Black;
-            //    chart3.Series[i - 1].BorderWidth = 2;
-            //    chart3.Series[i-1].Points.AddXY("res1", Convert.ToInt32(textBox4.Text));
-            //}
         }
 
         int print_res(int step, int v_pech, int res, int dur_proj, int coef, int smeshenie, Pen p, int z, int test)
@@ -537,39 +276,34 @@ namespace time_line_test
 
         void graph (int res, int cost_res, int j, double[] nums)
         {
-            //double[] nums2 = new double[12];
             int dur_proj = Convert.ToInt32(comboBox2.Text);
             int v_pech = Convert.ToInt32(textBox3.Text);
-            //double res1 = Convert.ToInt32(textBox4.Text);
-            //double cost_res1 = Convert.ToInt32(textBox5.Text);
-
-            int numb_month = 0;
-            numb_month = comboBox1.SelectedIndex;
+            int numb_month = comboBox1.SelectedIndex;
             double ostatok = 0;
+
+            chart1.Series.Add(dataGridView2[0, j].Value.ToString());
+            chart2.Series.Add(dataGridView2[0, j].Value.ToString());
+
+
             for (int i = 0; i < dur_proj; i++)
             {
                 double qty_for_one_month = ((v_pech - ostatok) / res);
-                //listBox1.Items.Add(i + " month= " + Math.Ceiling(qty_for_one_month));
                 nums[i] = Math.Ceiling(qty_for_one_month);
 
                 ostatok = ((Math.Ceiling(qty_for_one_month) - qty_for_one_month) * res);
 
 
-
+                chart1.Series[j].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                 chart1.Series[j].Points.AddXY(comboBox1.Items[numb_month], Math.Ceiling(qty_for_one_month) * cost_res);
 
-                //chart1.Series[j].Points.AddY(Math.Ceiling(qty_for_one_month) * cost_res, comboBox1.Items[i]);
-
-                //chart2.Series[j].Points.AddY(Math.Ceiling(qty_for_one_month));
-
+                //chart2.Series.Add(j.ToString());
+                chart2.Series[j].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                 chart2.Series[j].Points.AddXY(comboBox1.Items[numb_month], Math.Ceiling(qty_for_one_month));
-
 
                 if (numb_month <11)
                 numb_month++;
                 else
                     numb_month = numb_month -11;
-
 
             }
 
@@ -589,20 +323,30 @@ namespace time_line_test
             double[] nums2 = new double[dur_proj];
             double[] nums3 = new double[dur_proj];
             listBox1.Items.Clear();
-            chart1.Series[0].Points.Clear();
-            chart1.Series[1].Points.Clear();
-            chart1.Series[2].Points.Clear();
 
-            chart2.Series[0].Points.Clear();
-            chart2.Series[1].Points.Clear();
-            chart2.Series[2].Points.Clear();
+            chart1.Series.Clear();
+            chart2.Series.Clear();
 
-            
+            //chart1.Series[0].Points.Clear();
+            //chart1.Series[1].Points.Clear();
+            //chart1.Series[2].Points.Clear();
 
-            graph(Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox5.Text), 0, nums1);
-            graph(Convert.ToInt32(textBox6.Text), Convert.ToInt32(textBox7.Text), 1, nums2);
-            graph(Convert.ToInt32(textBox8.Text), Convert.ToInt32(textBox9.Text), 2, nums3);
+            //chart2.Series[0].Points.Clear();
+            //chart2.Series[1].Points.Clear();
+            //chart2.Series[2].Points.Clear();
 
+            int qty_items = dataGridView2.RowCount - 1;
+
+
+            for (int i = 0; i < qty_items; i++)
+            {
+                graph(Convert.ToInt32(dataGridView2[2, i].Value), Convert.ToInt32(dataGridView2[3, i].Value), i, nums1);
+
+                //graph(Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox5.Text), 0, nums1);
+                //graph(Convert.ToInt32(textBox6.Text), Convert.ToInt32(textBox7.Text), 1, nums2);
+                //graph(Convert.ToInt32(textBox8.Text), Convert.ToInt32(textBox9.Text), 2, nums3);
+
+            }
             double z1 = 0, z2 = 0, z3 = 0, z4 = 0, z5 = 0, z6 = 0, z7 = 0, z8 = 0, z9 = 0;
             for (int i = 0; i < dur_proj; i++)
             {
